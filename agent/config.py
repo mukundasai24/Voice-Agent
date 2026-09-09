@@ -26,8 +26,8 @@ class Settings(BaseSettings):
 
     # ── Groq (required) ───────────────────────────────────────────────────────
     groq_api_key: str = Field(..., alias="GROQ_API_KEY")
-    llm_model: str = Field("llama-3.3-70b-versatile", alias="LLM_MODEL")
-    stt_model: str = Field("whisper-large-v3", alias="STT_MODEL")
+    llm_model: str = Field("qwen/qwen3.8-27b", alias="LLM_MODEL")
+    stt_model: str = Field("whisper-large-v3-turbo", alias="STT_MODEL")
 
     # ── Twilio (required only for Phase 3) ────────────────────────────────────
     twilio_account_sid: str = Field("", alias="TWILIO_ACCOUNT_SID")
@@ -35,7 +35,8 @@ class Settings(BaseSettings):
     twilio_phone_number: str = Field("", alias="TWILIO_PHONE_NUMBER")
 
     # ── TTS ───────────────────────────────────────────────────────────────────
-    tts_engine: str = Field("piper", alias="TTS_ENGINE")  # "piper" or "elevenlabs"
+    tts_engine: str = Field("system", alias="TTS_ENGINE")  # "system", "piper", or "elevenlabs"
+    piper_voice: str = Field("en_US-amy-medium", alias="PIPER_VOICE")
     elevenlabs_api_key: str = Field("", alias="ELEVENLABS_API_KEY")
     elevenlabs_voice_id: str = Field("", alias="ELEVENLABS_VOICE_ID")
 
