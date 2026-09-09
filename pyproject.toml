@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "voice-agent"
+version = "0.1.0"
+description = "Phone-calling AI voice agent — Pipecat + Twilio + Groq + Piper"
+requires-python = ">=3.11"
+dependencies = [
+    # ── Core agent logic (all phases) ────────────────────────────────────────
+    "groq>=0.9.0",               # Groq SDK: Whisper STT + Llama LLM
+    "python-dotenv>=1.0.0",      # loads .env into os.environ
+    "pydantic>=2.6.0",           # typed settings + data validation
+    "pydantic-settings>=2.0.0",  # load typed settings from .env
+    "rich>=13.7.0",              # pretty terminal output for console demo
+
+    # ── Backend / telephony (Phase 2+) ────────────────────────────────────────
+    "fastapi>=0.110.0",          # webhook + WebSocket server
+    "uvicorn[standard]>=0.29.0", # ASGI server for FastAPI
+    "websockets>=12.0",          # WebSocket support
+    "twilio>=9.0.0",             # Twilio REST API (outbound calls, TwiML)
+    "httpx>=0.27.0",             # async HTTP client
+
+    # ── Pipecat orchestration (Phase 2+) ──────────────────────────────────────
+    # Install after Phase 1 is working:
+    # "pipecat-ai[twilio,groq,piper]>=0.0.40",
+
+    # ── Storage ───────────────────────────────────────────────────────────────
+    "aiosqlite>=0.20.0",         # async SQLite (used by default backend)
+
+    # ── Testing ───────────────────────────────────────────────────────────────
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.optional-dependencies]
+elevenlabs = ["elevenlabs>=1.2.0"]  # optional nicer TTS voice
+supabase   = ["supabase>=2.4.0"]    # optional Supabase/Postgres backend
+dev        = ["ruff>=0.4.0", "mypy>=1.9.0"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths    = ["tests"]
+
+[tool.ruff]
+line-length = 100

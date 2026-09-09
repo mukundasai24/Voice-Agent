@@ -1,0 +1,11 @@
+{
+  "_comment": "Expected output for sample_transcript.txt — values may vary slightly based on LLM reasoning",
+  "collected": {
+    "caller_name": "Priya Sharma",
+    "preferred_date": "2026-10-15",
+    "preferred_time": "10:30",
+    "service_type": "initial consultation",
+    "callback_number": "use calling number"
+  },
+  "missing_at_end": []
+}
