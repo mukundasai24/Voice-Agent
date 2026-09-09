@@ -15,15 +15,20 @@ dependencies = [
     "pydantic-settings>=2.0.0",  # load typed settings from .env
     "rich>=13.7.0",              # pretty terminal output for console demo
 
-    # ── Backend / telephony (Phase 2+) ────────────────────────────────────────
+    # ── Audio I/O (Phase 2) ────────────────────────────────────────────────────
+    "sounddevice>=0.4.6",        # microphone recording + speaker playback
+    "numpy>=1.26.0",             # audio array processing
+    "pyttsx3>=2.90",             # system TTS (Windows/Mac/Linux, zero setup)
+
+    # ── Backend / telephony (Phase 3+) ────────────────────────────────────────
     "fastapi>=0.110.0",          # webhook + WebSocket server
     "uvicorn[standard]>=0.29.0", # ASGI server for FastAPI
     "websockets>=12.0",          # WebSocket support
     "twilio>=9.0.0",             # Twilio REST API (outbound calls, TwiML)
     "httpx>=0.27.0",             # async HTTP client
 
-    # ── Pipecat orchestration (Phase 2+) ──────────────────────────────────────
-    # Install after Phase 1 is working:
+    # ── Pipecat orchestration (Phase 3+) ──────────────────────────────────────
+    # Install after Phase 2 is working:
     # "pipecat-ai[twilio,groq,piper]>=0.0.40",
 
     # ── Storage ───────────────────────────────────────────────────────────────
